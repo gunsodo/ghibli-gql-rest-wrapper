@@ -1,0 +1,66 @@
+type Film {
+  id: String!
+  title: String!
+  originalTitle: String
+  originalTitleRomanised: String
+  description: String
+  director: String
+  producer: String
+  releaseDate: String
+  runningTime: String
+  ratingScore: String
+  people: [String!]
+  species: [String!]
+  location: [String!]
+  vehicles: [String!]
+  url: String!
+  length: String
+}
+
+input CreateFilmInput {
+  title: String!
+  originalTitle: String
+  originalTitleRomanised: String
+  description: String
+  director: String
+  producer: String
+  releaseDate: String
+  runningTime: String
+  ratingScore: String
+  people: [String!]
+  species: [String!]
+  location: [String!]
+  vehicles: [String!]
+  url: String!
+  length: String
+}
+
+input UpdateFilmInput {
+  id: String!
+  title: String
+  originalTitle: String
+  originalTitleRomanised: String
+  description: String
+  director: String
+  producer: String
+  releaseDate: String
+  runningTime: String
+  ratingScore: String
+  people: [String!]
+  species: [String!]
+  location: [String!]
+  vehicles: [String!]
+  url: String
+  length: String
+}
+
+type Query {
+  films: [Film!]!
+  film(id: String!): Film
+}
+
+type Mutation {
+  createFilm(createFilmInput: CreateFilmInput!): Film!
+  updateFilm(updateFilmInput: UpdateFilmInput!): Film!
+  removeFilm(id: String!): Film
+}
