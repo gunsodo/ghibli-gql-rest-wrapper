@@ -56,11 +56,19 @@ export class Film {
     runningTime?: Nullable<string>;
     ratingScore?: Nullable<string>;
     people?: Nullable<string[]>;
-    species?: Nullable<string[]>;
+    species?: Nullable<Species[]>;
     location?: Nullable<string[]>;
     vehicles?: Nullable<string[]>;
     url: string;
     length?: Nullable<string>;
+}
+
+export class Species {
+    id: string;
+    name: string;
+    classification?: Nullable<string>;
+    eyeColors?: Nullable<string>;
+    hairColors?: Nullable<string>;
 }
 
 export abstract class IQuery {

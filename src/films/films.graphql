@@ -10,11 +10,19 @@ type Film {
   runningTime: String
   ratingScore: String
   people: [String!]
-  species: [String!]
+  species: [Species!]
   location: [String!]
   vehicles: [String!]
   url: String!
   length: String
+}
+
+type Species {
+  id: String!
+  name: String!
+  classification: String
+  eyeColors: String
+  hairColors: String
 }
 
 input CreateFilmInput {
