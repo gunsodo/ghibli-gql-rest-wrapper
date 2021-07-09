@@ -13,10 +13,25 @@ export class FilmsService {
 
   private apiUrl = 'https://ghibliapi.herokuapp.com/films';
 
+  private synonyms = {
+    release_date: "releaseDate",
+    running_time: "runningTime",
+    rt_score: "ratingScore",
+    original_title: "originalTitle",
+    original_title_romanised: "originalTitleRomanised"
+  }
+
   private helpPipe(url: string) {
     return this.httpService.get(url).pipe(
       map((axiosResponse) => {
         let film = axiosResponse.data;
+
+        // Resolve field names: renaming some keys
+        for (const [k, v] of Object.entries(this.synonyms)) {
+          delete Object.assign(film, {[v]: film[k] })[k];
+        }
+
+        console.log(film);
         return film;
       }));
   }
